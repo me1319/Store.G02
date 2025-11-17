@@ -10,7 +10,7 @@ namespace Services.Abstraction
     public interface IProductService
     {
         // service is a class we write the 4 main methods imp in
-        Task<IEnumerable<ProductResultDto>> GetAllProductsAsync();
+        Task<PaginationResponse<ProductResultDto>> GetAllProductsAsync(ProductSpecificationParamters specParams);
         Task<ProductResultDto?> GetProductByIdAsync(int id);
         Task<IEnumerable<BrandResultDto>> GetAllBrandsAsync();
         Task<IEnumerable<TypeResultDto>> GetAllTypesAsync();
