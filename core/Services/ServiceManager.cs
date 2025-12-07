@@ -10,8 +10,17 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class ServiceManager(IUnitOfWork unitOfWork,IMapper mapper):IServiceManager
+    public class ServiceManager(
+        IUnitOfWork unitOfWork,
+        IMapper mapper,
+        IBasketRepository repository,
+        ICacheRepository cacheRepository
+        ):IServiceManager
     {
         public IProductService ProductService { get; } = new ProductService(unitOfWork, mapper);
+
+        public IBasketService basketService { get; } = new BasketService(repository, mapper);
+        public ICacheServices cacheServices { get; } = new CacheServices(cacheRepository);
+
     }
 }
